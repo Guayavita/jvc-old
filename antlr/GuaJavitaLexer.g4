@@ -3,7 +3,6 @@ lexer grammar GuaJavitaLexer;
 // Keywords
 
 BREAK                  : 'break' -> mode(NLSEMI);
-FUNC                   : 'func';
 CASE                   : 'case';
 STRUCT                 : 'struct';
 ELSE                   : 'else';

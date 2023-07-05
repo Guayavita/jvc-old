@@ -1,0 +1,52 @@
+// Line
+/*
+Multi
+Line
+*/
+package dibu.love;
+
+import io;
+
+export PI = 3.14;
+
+
+var intVal = 0;
+var doubleVal = 0.0;
+var longVal = 0L;
+var floatVal = 0.0F;
+var byteVa = 0XFF;
+var boolVal = false;
+
+var str = "";
+var str2 = '';
+var str3 = `hello ${str}-str2`;
+var str3 = `
+Line 1
+Line 2
+Line 3
+`;
+
+
+struct File {
+   string path;
+   long size;
+}
+
+File? read(string path){
+  var file = file.read(path);
+  if (file?) {
+        return File(path, file.sizeOf(file));
+   } else {
+        yield file.error;
+   }
+}
+
+int main() {
+ val fileInfo = read(env.args[0]);
+ if (fileInfo?){
+   print(`Your File ${fileInfo.path} Size is ${fileInfo.size}`);
+ } else {
+   print(`Unable to Process info ${fileInfo.error}`);
+ }
+ return 0;
+}
