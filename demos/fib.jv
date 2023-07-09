@@ -2,7 +2,7 @@ export fib;
 
 int fib (int n) {
     return case {
-        n < 2   -> n;
-        default -> fib (n-1) + fib (n-2);
+        n < 2   : n;
+        default : fib (n-1) + fib (n-2);
     }
 }

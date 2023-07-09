@@ -30,7 +30,7 @@ def str3 = """
     Line 3
 """;
 
-def File {
+struct File {
    string path;
    long size;
 }
@@ -38,8 +38,8 @@ def File {
 File? read(string path) {
   def file = file.read(path);
   return case {
-    file? -> File(path, file.sizeOf(file));
-    default: yield file.error;
+    file?   : File(path, file.sizeOf(file));
+    default : yield file.error;
   }
 }
 
