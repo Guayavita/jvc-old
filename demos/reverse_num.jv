@@ -1,0 +1,8 @@
+export reverse;
+
+def reverse(int num) : int {
+    return case {
+        num < 10 -> num;
+        default  -> num % 10 + (10 * reverse(num / 10))
+    }
+}
