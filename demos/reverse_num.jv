@@ -1,8 +1,12 @@
 export reverse;
 
-int reverse(int num) {
+int reverseAux(int num, int accu) {
     return case {
-        num < 10 -> num;
-        default  -> num % 10 + (10 * reverse(num / 10))
+        num <= 0 -> accu;
+        default  -> reverseAux(num / 10, (num % 10) + (accu * 10));
     }
+}
+
+int reverse(int num) {
+    return reverseAux(num, 0);
 }
