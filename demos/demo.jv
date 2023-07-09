@@ -1,0 +1,55 @@
+package path.to.package.location;
+
+// this is a single line comment
+
+/*
+This is a
+multi-line comment
+*/
+
+// Import section
+import io;
+
+// Export section
+export PI = 3.14;
+export read;
+
+def intVal = 0;       // 0I; also allowed
+def doubleVal = 0.0;  // O.OD; also allowed
+def longVal = 0L;
+def floatVal = 0.0F;
+def byteVa = 0XFF;
+def boolVal = false;
+
+def str  = "";
+def str2 = '';
+def str3 = `hello ${str}-str2`;
+def str3 = """
+    Line 1
+    Line 2
+    Line 3
+""";
+
+struct File {
+   string path;
+   long size;
+}
+
+File? read(string path) {
+  def file = file.read(path);
+  return case {
+    file?   : File(path, file.sizeOf(file));
+    default : yield file.error;
+  }
+}
+
+int main() {
+ def fileInfo = read(env.args[0]);
+ if (fileInfo?) {
+   printLn(`Your File ${fileInfo.path} Size is ${fileInfo.size}`);
+ } else {
+   printLn(`Unable to Process info ${fileInfo.error}`);
+   return 1;
+ }
+ return 0;
+}
