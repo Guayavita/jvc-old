@@ -8,6 +8,6 @@ void add10(int @accu) {
 void main() {
     def @sum = 0;
     def threads = range(1,10).map ( num -> { fork add10(@sum); });
-    join (threads);
+    join threads;
     assertEquals(100, @sum);
 }
