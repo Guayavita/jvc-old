@@ -37,7 +37,7 @@ struct File {
 
 File? read(string path) {
   def file = file.read(path);
-  return case {
+  return switch {
     file?   : File(path, file.sizeOf(file));
     default : yield file.error;
   }
