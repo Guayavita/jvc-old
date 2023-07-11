@@ -1,0 +1,13 @@
+
+void add10(int @accu) {
+   range(1,10).each( n -> {
+      @accu += 1;
+   });
+}
+
+void main() {
+    def @sum = 0;
+    def threads = range(1,10).map ( num -> { fork add10(@sum); });
+    join threads;
+    assertEquals(100, @sum);
+}
